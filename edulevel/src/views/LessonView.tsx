@@ -17,37 +17,102 @@ export function LessonView({ lesson, progress: dbProgress, onActivity, onBack }:
     const playerRef = useRef<any>(null);
 
     // Temporary overrides to bypass database updates (requested by user)
-    // Temporary overrides to bypass database updates (requested by user)
     const VIDEO_OVERRIDES: Record<string, string> = {
+        // --- MATEMÁTICAS ---
         // UNIDAD 1: ENTEROS
         "Conjunto Z (Números Enteros)": "g6bG6NjsDT4",
-        "Valor Absoluto": "I1-d9I72PUI", // profe Alex
-        "Orden en Z (Mayor y Menor)": "D9l0yG-U_S0", // profe Alex
-        "El Plano Cartesiano": "kzOzYY-n-wQ", // Daniel Carreon
-        "Suma (Igual Signo)": "aGJ00fU5Csw", // Matemáticas profe Alex
-
+        "Valor Absoluto": "I1-d9I72PUI",
+        "Orden en Z (Mayor y Menor)": "D9l0yG-U_S0",
+        "El Plano Cartesiano": "kzOzYY-n-wQ",
+        "Suma (Igual Signo)": "aGJ00fU5Csw",
         // UNIDAD 2: OPERACIONES Z
-        "Suma (Diferente signo)": "2AFZpUbG7HQ", // Daniel Carreon
-        "Resta de Enteros": "8U9T8_gU55o", // Súper fácil
-        "Multiplicación": "ryXzNxvw31o", // Súper fácil
-        "División Exacta": "g25yIskh1VE", // Súper fácil
-        "Polinomios Aritméticos": "cbOQh-6uV9M", // Profe Alex (Operaciones combinadas)
-
+        "Suma (Diferente signo)": "2AFZpUbG7HQ",
+        "Resta de Enteros": "8U9T8_gU55o",
+        "Multiplicación": "ryXzNxvw31o",
+        "División Exacta": "g25yIskh1VE",
+        "Polinomios Aritméticos": "cbOQh-6uV9M",
         // UNIDAD 3: RACIONALES
-        "Fracciones": "TV55A0C888M", //  Conceptos básicos
-        "Equivalentes": "osePKL39EBo", //  Daniel Carreon
-        "Fracción a Decimal": "pOm1azhMuYM", // Daniel Carreon
-        "Orden en Q": "B-K0u78zmpk", // Comparación de fracciones
-        "Suma Homogénea": "antZqj9ePys", // Daniel Carreon
+        "Fracciones": "TV55A0C888M",
+        "Equivalentes": "osePKL39EBo",
+        "Fracción a Decimal": "pOm1azhMuYM",
+        "Orden en Q": "B-K0u78zmpk",
+        "Suma Homogénea": "antZqj9ePys",
+        // UNIDAD 4: DOMINIO
+        "Suma Heterogénea": "LgMptyzudXU",
+        "Multiplicación Q": "VDTZxc1eHZC",
+        "División Q": "RNtvQitNbLk",
+        "Ecuaciones Aditivas": "D6_w37c7D0Q",
+        "PROYECTO FINAL": "mB50d68rN8U",
 
-        // UNIDAD 4: DOMINIO Y APLICACION
-        "Suma Heterogénea": "LgMptyzudXU", // Daniel Carreon (Carita feliz)
-        "Multiplicación Q": "VDTZxc1eHZC", // Daniel Carreon
-        "División Q": "RNtvQitNbLk", // Daniel Carreon
-        "Ecuaciones Aditivas": "D6_w37c7D0Q", // Ecuaciones de primer grado
-        "PROYECTO FINAL": "mB50d68rN8U", // Ejemplo de proyecto (tienda/matemáticas)
+        // --- ESPAÑOL ---
+        "Elementos Comunicación": "rDk-XMg9B9w", // Rocio Carreon
+        "Funciones Lenguaje": "pDJ300rA0jc", // Funciones del lenguaje
+        "Signo Lingüístico": "5238L7LrfiO", // Significado y Significante
+        "Variedades Lingüísticas": "Gp4A8E8ueVL",
+        "Resumen y Síntesis": "GPY8KF8eitA",
+        "Género Narrativo": "HOHGC_xnrmK",
+        "El Cuento": "TyUjJg4jP7I", // Happy Learning
+        "Tipos de Narrador": "XbL-kvrrQ6Y",
+        "Tiempo y Espacio": "H6TaHYKzx_Y",
+        "Leyenda y Mito": "FBJiFxiVORr",
+        "Género Lírico": "C93LrRH9T0h",
+        "Verso y Estrofa": "0NO3UvcX1MR",
+        "La Rima": "dpjlpRn8SVO",
+        "Figuras Literarias I": "3M4pNpL-xCs",
+        "Figuras Literarias II": "GyPJRQRrPQI",
+        "Sustantivo y Adjetivo": "tnR9BY3RBoc",
+        "El Verbo": "EkPr9yIJlf3",
+        "Ortografía: Acentuación": "12WZMgeARfz",
+        "Signos de Puntuación": "0CsmK8E94GK",
 
-        "Transporte Celular": "kY41yS5x-4U" // Khan Academy video
+        // --- CIENCIAS NATURALES ---
+        "Teoría Celular": "aoj9oGmGGgQ", // Happy Learning - La Célula
+        "Procariota vs Eucariota": "5Y3qM4Z8k5I", // Happy Learning
+        "Animal vs Vegetal": "PseudoID_Cell", // Placeholder
+        "Organelos Celulares": "Hdnr6xOd0E-",
+        "Transporte Celular": "kY41yS5x-4U", // Khan Academy
+        "De Célula a Organismo": "aoj9oGmGGgQ", // Niveles (Repetido o similar)
+        "Tejidos Animales": "PseudoID_Tif",
+        "Sistema Digestivo": "5DUIc9BchOk", // Happy Learning
+        "Respiración y Circulación": "Wq_7cZc7h2s", // Happy Learning
+        "Propiedades de la Materia": "swcjamDFsn0", // Happy Learning
+        "Estados de la Materia": "c4n-yD1sZ5s",
+        "Cambios de Estado": "xZlp4Y291M4",
+        "Átomo (Intro)": "D0V-N3TrIkY",
+        "Tabla Periódica (Intro)": "PsW0sGF5EBE",
+        "Ecosistemas": "XKSgZ0QdgAc",
+
+        // --- CIENCIAS SOCIALES ---
+        "Caída del Imperio Romano": "UF_yHrFP1Ls", // Happy Learning
+        "Invasiones Bárbaras": "P-e2f4J0aYc",
+        "Imperio Bizantino": "GjEnSgnlD8Q", // Edad Media General
+        "Surgimiento del Islam": "PseudoID_Islam",
+        "Introducción Edad Media": "0CnXN8_z-bU", // Happy Learning
+        "El Sistema Feudal": "Vy_CyG1aWno", // Academia Play
+        "La Economía Feudal": "PseudoID_FeudalEco",
+        "Continentes y Océanos": "mnR2MTjOBG4", // Happy Learning
+        "Geografía de Europa": "PseudoID_Euro",
+        "Geografía de América": "PseudoID_Amer",
+        "Derechos Humanos": "PPe5H81Xf2E", // Happy Learning
+        "La Democracia": "B9d1u_D7I-Y", // Happy Learning
+
+        // --- INGLÉS ---
+        "Personal Pronouns & To Be": "Z-mX4c3K3gA",
+        "Greetings & Farewells": "Fw0rdSHZ6yY",
+        "The Alphabet & Spelling": "75p-N9YKqNo", // ABC Song
+        "Numbers 1-100": "e0dJWfQHF8Y",
+        "Countries & Nationalities": "l6A2EFkjXq4",
+        "Simple Present (Affirmative)": "L9OAbtSTPRg",
+        "Daily Routine Verbs": "M4FMEmlOqTM",
+        "The Time": "fq2tRfHu5s8",
+
+        // --- TECNOLOGÍA ---
+        "Historia del Computador": "_v7U_I0W7c8", // Happy Learning
+        "Hardware y Software": "n_69cZzAbM8",
+        "Periféricos": "PseudoID_Peri",
+        "Procesador de Texto (Intro)": "PseudoID_Word",
+        "¿Cómo funciona Internet?": "iC40s9-tOQo", // Happy Learning
+        "Seguridad Digital": "9-z75_kXQyA"
     };
 
     const videoId = VIDEO_OVERRIDES[lesson.title] || lesson.content.concept?.youtube_id || lesson.content.concept?.data;
